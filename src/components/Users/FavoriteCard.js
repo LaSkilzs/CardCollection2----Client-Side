@@ -1,11 +1,14 @@
 import React from "react";
 import FavoriteDetails from "./FavoriteDetails";
 
-const FavoriteCard = () => {
+const FavoriteCard = props => {
+  const { tempData } = props;
   return (
     <div>
       FavoriteCard Ready!
-      <FavoriteDetails />
+      {tempData.map(car => (
+        <FavoriteDetails key={car.unique} car={car} />
+      ))}
     </div>
   );
 };
