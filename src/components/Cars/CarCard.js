@@ -2,7 +2,7 @@ import React from "react";
 import CarDetails from "./CarDetails";
 
 const CarCard = props => {
-  const { tempData } = props;
+  const { tempData, addToFavorites, addToLikes } = props;
   return (
     <React.Fragment>
       <div className="container my-3">
@@ -13,7 +13,14 @@ const CarCard = props => {
         </div>
         <div className="row">
           {tempData.map(car => {
-            return <CarDetails key={car.unique} car={car} />;
+            return (
+              <CarDetails
+                key={car.unique}
+                car={car}
+                addToFavorites={addToFavorites}
+                addToLikes={addToLikes}
+              />
+            );
           })}
         </div>
       </div>
