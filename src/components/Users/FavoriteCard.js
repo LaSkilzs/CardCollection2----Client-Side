@@ -2,14 +2,17 @@ import React from "react";
 import FavoriteDetails from "./FavoriteDetails";
 
 const FavoriteCard = props => {
-  const { favorites, removeFav } = props;
+  const { favorites, removeFav, addToLikes } = props;
 
-  console.log(props);
   return (
     <div>
-      FavoriteCard Ready!
       {favorites.map(car => (
-        <FavoriteDetails key={car.unique} car={car} removeFav={removeFav} />
+        <FavoriteDetails
+          key={car.unique}
+          car={car}
+          removeFav={removeFav}
+          addToLikes={addToLikes}
+        />
       ))}
     </div>
   );

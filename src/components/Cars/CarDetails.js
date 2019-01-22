@@ -1,4 +1,5 @@
 import React from "react";
+import Car from "../Cars/Car.css";
 
 class CarDetails extends React.Component {
   constructor(props) {
@@ -15,7 +16,13 @@ class CarDetails extends React.Component {
   };
 
   handleLikes = e => {
+    e.preventDefault();
     this.props.addToLikes(e.target.value, this.props.car);
+  };
+
+  onClick = e => {
+    e.preventDefault();
+    this.setState({ showCar: !this.state.showCar });
   };
 
   displayImage = index => {
@@ -25,7 +32,7 @@ class CarDetails extends React.Component {
         return (
           <div>
             <img
-              src={this.props.car.image2}
+              src={this.props.car.image1}
               alt="car2"
               className="d-block w-100"
             />
@@ -35,7 +42,7 @@ class CarDetails extends React.Component {
         return (
           <div>
             <img
-              src={this.props.car.image1}
+              src={this.props.car.image2}
               alt="car2"
               className="d-block w-100"
             />
@@ -66,12 +73,15 @@ class CarDetails extends React.Component {
         <React.Fragment>
           <div className="col-10 mx-auto col-md-6 col-lg4 my-3">
             <div className="card">
-              <img
-                src={image1}
-                alt="car"
-                className="img-card-top"
-                style={{ height: "14rem" }}
-              />
+              <div className="img-container">
+                <img
+                  src={image1}
+                  alt="car"
+                  className="img-card-top"
+                  style={{ height: "14rem" }}
+                  onClick={this.onClick}
+                />
+              </div>
               <div className="card-body text-capitalize">
                 <h6>{name + " " + model}</h6>
                 <h6 className="text-warning text-slanted">{price}</h6>
@@ -93,7 +103,7 @@ class CarDetails extends React.Component {
                   className="btn btn-success mx-2 text-capitalize"
                   onClick={this.handleFavorites}
                 >
-                  add to favorites
+                  add to favs
                 </a>
               </div>
             </div>
@@ -109,8 +119,9 @@ class CarDetails extends React.Component {
                 <button
                   className="btn btn-primary mb-5 text-capitalize"
                   type="button"
+                  onClick={this.onClick}
                 >
-                  back to favs list
+                  back to cars
                 </button>
                 {this.displayImage(this.state.showImage)}
               </div>
@@ -127,9 +138,9 @@ class CarDetails extends React.Component {
                 <a
                   href="/"
                   className="btn btn-danger mt-2 text-capitalize"
-                  onClick={this.handleRemove}
+                  onClick={this.handleFavorites}
                 >
-                  remove fav
+                  add to favs
                 </a>
                 <ul className="list-group mt-4">
                   <h2 className="mt-3 mb-4">Specs</h2>

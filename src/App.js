@@ -1,4 +1,5 @@
 import React from "react";
+import { Switch, Route } from "react-router-dom";
 import "./App.css";
 import data from "./data";
 import favs from "./favs";
@@ -68,11 +69,13 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state.favorites);
     return (
       <div>
-        This is the Main App!
         <Navbar />
+        <Switch>
+          <Route path="/cars" component={CarsContainer} />
+          <Route path="/favs" component={UsersContainer} />
+        </Switch>
         <CarsContainer
           tempData={this.state.tempCars}
           makes={this.state.makes}
@@ -86,6 +89,7 @@ class App extends React.Component {
           cars={this.state.cars}
           favorites={this.state.favorites}
           removeFav={this.removeFav}
+          addToLikes={this.addToLikes}
         />
       </div>
     );

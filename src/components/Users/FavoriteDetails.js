@@ -21,8 +21,15 @@ class FavoriteDetails extends React.Component {
     this.props.removeFav(this.props.car);
   };
 
-  handleClick = () => {
+  handleClick = e => {
+    e.preventDefault();
     console.log("clicked");
+  };
+
+  handleFav = () => this.setState({ showFavs: !this.state.showFavs });
+
+  handleLikes = e => {
+    this.props.addToLikes(e.target.value, this.props.car);
   };
 
   displayImage = index => {
@@ -30,7 +37,7 @@ class FavoriteDetails extends React.Component {
       default:
       case true:
         return (
-          <div>
+          <div className="img-container">
             <img
               src={this.props.car.image2}
               alt="car2"
@@ -40,7 +47,7 @@ class FavoriteDetails extends React.Component {
         );
       case false:
         return (
-          <div>
+          <div className="img-container">
             <img
               src={this.props.car.image1}
               alt="car2"
@@ -76,8 +83,9 @@ class FavoriteDetails extends React.Component {
                 <button
                   className="btn btn-primary mb-5 text-capitalize"
                   type="button"
+                  onClick={this.handleFav}
                 >
-                  back to favs list
+                  back to favs
                 </button>
                 {this.displayImage(this.state.showImage)}
               </div>
@@ -132,6 +140,7 @@ class FavoriteDetails extends React.Component {
                 alt="car"
                 className="img-card-top"
                 style={{ height: "14rem" }}
+                onClick={this.handleFav}
               />
               <div className="card-body text-capitalize">
                 <h6>{name + " " + model}</h6>
@@ -151,10 +160,10 @@ class FavoriteDetails extends React.Component {
                 <a
                   href="/"
                   id={unique}
-                  className="btn btn-success mx-2 text-capitalize"
-                  onClick={this.handleFavorites}
+                  className="btn btn-danger mx-2 text-capitalize"
+                  onClick={this.handleRemove}
                 >
-                  add to favorites
+                  remove fav
                 </a>
               </div>
             </div>

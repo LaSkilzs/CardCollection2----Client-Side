@@ -12,7 +12,6 @@ class CarsIndex extends React.Component {
     } = this.props;
     return (
       <div>
-        CarsIndex is Ready!
         <CarCard
           carList={carList}
           makeList={makeList}

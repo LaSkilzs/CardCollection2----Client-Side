@@ -1,5 +1,6 @@
 import React from "react";
 import CarDetails from "./CarDetails";
+import "./carcard.css";
 
 const CarCard = props => {
   const { tempData, addToFavorites, addToLikes } = props;
