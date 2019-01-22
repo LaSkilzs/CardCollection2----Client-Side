@@ -1,4 +1,5 @@
 import React from "react";
+import "./search.css";
 
 class Search extends React.Component {
   render() {
@@ -14,7 +15,7 @@ class Search extends React.Component {
               </h1>
               <form className="mt-4" onSubmit={handleSubmit}>
                 <label htmlFor="search" className="text-capitalize">
-                  type cars by name, make, or model
+                  Find cars by model, make, name
                 </label>
                 <div className="input-group">
                   <input
@@ -29,7 +30,6 @@ class Search extends React.Component {
                       type="submit"
                       className="input-group-text bg-primary text-white"
                     >
-                      {" "}
                       <i className="fas fa-search" />
                     </button>
                   </div>

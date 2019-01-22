@@ -1,5 +1,5 @@
 import React from "react";
-import Car from "../Cars/Car.css";
+import "../Cars/cardetails.css";
 
 class CarDetails extends React.Component {
   constructor(props) {
@@ -25,28 +25,39 @@ class CarDetails extends React.Component {
     this.setState({ showCar: !this.state.showCar });
   };
 
+  handleImage = e => {
+    e.preventDefault();
+    this.setState({
+      showImage: !this.state.showImage
+    });
+  };
+
   displayImage = index => {
     switch (index) {
       default:
       case true:
         return (
-          <div>
-            <img
-              src={this.props.car.image1}
-              alt="car2"
-              className="d-block w-100"
-            />
-          </div>
+          <article>
+            <div className="container">
+              <img
+                src={this.props.car.image2}
+                alt="car2"
+                className="d-block w-100"
+              />
+            </div>
+          </article>
         );
       case false:
         return (
-          <div>
-            <img
-              src={this.props.car.image2}
-              alt="car2"
-              className="d-block w-100"
-            />
-          </div>
+          <article>
+            <div className="container">
+              <img
+                src={this.props.car.image1}
+                alt="car2"
+                className="d-block w-100"
+              />
+            </div>
+          </article>
         );
     }
   };
@@ -71,7 +82,7 @@ class CarDetails extends React.Component {
     if (this.state.showCar === false) {
       return (
         <React.Fragment>
-          <div className="col-10 mx-auto col-md-6 col-lg4 my-3">
+          <div className="col-10 mx-auto col-md-4 col-lg4 my-3">
             <div className="card">
               <div className="img-container">
                 <img
@@ -115,7 +126,7 @@ class CarDetails extends React.Component {
         <React.Fragment>
           <div className="container">
             <div className="row">
-              <div className="col-10 mx-auto col-md-6 my-3">
+              <div className="col-10 mx-auto col-md-4 my-3">
                 <button
                   className="btn btn-primary mb-5 text-capitalize"
                   type="button"
@@ -126,7 +137,7 @@ class CarDetails extends React.Component {
                 {this.displayImage(this.state.showImage)}
               </div>
 
-              <div className="col-10 mx-auto col-md-6 my-3">
+              <div className="col-10 mx-auto col-md-4 my-3">
                 <h1 className="text-uppercase">{make_id}</h1>
                 <a
                   href="/"

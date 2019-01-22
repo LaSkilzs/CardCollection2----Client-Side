@@ -9,21 +9,18 @@ class Navbar extends React.Component {
       <nav className="navbar">
         {/* <img src={logo2} alt="car collection logo" /> */}
         <ul className="nav-links">
-          <li>
-            <a href="/" className="nav-link">
-              Cars
-            </a>
-          </li>
-          <li>
-            <a href="/" className="nav-link">
-              Favorites
-            </a>
-          </li>
-          <li>
-            <a href="/" className="nav-link">
-              Login
-            </a>
-          </li>
+          <Link to="/">
+            <li className="nav-link">Home</li>
+          </Link>
+          <Link to="/cars">
+            <li className="nav-link">Cars</li>
+          </Link>
+          <Link to="/favs">
+            <li className="nav-link">Favorites</li>
+          </Link>
+          <Link to="/login">
+            <li className="nav-link">Login/SignUp</li>
+          </Link>
         </ul>
       </nav>
     );

@@ -1,5 +1,6 @@
 import React from "react";
 import FavoriteCard from "./FavoriteCard";
+import "./favorite.css";
 
 class Favorites extends React.Component {
   render() {
@@ -13,16 +14,18 @@ class Favorites extends React.Component {
     } = this.props;
 
     return (
-      <div>
-        <FavoriteCard
-          carList={carList}
-          makeList={makeList}
-          tempData={tempData}
-          favorites={favorites}
-          removeFav={removeFav}
-          addToLikes={addToLikes}
-        />
-      </div>
+      <React.Fragment>
+        <div className="carlist">
+          <FavoriteCard
+            carList={carList}
+            makeList={makeList}
+            tempData={tempData}
+            favorites={favorites}
+            removeFav={removeFav}
+            addToLikes={addToLikes}
+          />
+        </div>
+      </React.Fragment>
     );
   }
 }

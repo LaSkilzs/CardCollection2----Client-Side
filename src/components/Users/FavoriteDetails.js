@@ -1,4 +1,5 @@
 import React from "react";
+import "./favoritedetails.css";
 
 class FavoriteDetails extends React.Component {
   constructor() {
@@ -79,7 +80,7 @@ class FavoriteDetails extends React.Component {
         <React.Fragment>
           <div className="container">
             <div className="row">
-              <div className="col-10 mx-auto col-md-6 my-3">
+              <div className="col-10 mx-auto col-md-4 my-3">
                 <button
                   className="btn btn-primary mb-5 text-capitalize"
                   type="button"
@@ -90,7 +91,7 @@ class FavoriteDetails extends React.Component {
                 {this.displayImage(this.state.showImage)}
               </div>
 
-              <div className="col-10 mx-auto col-md-6 my-3">
+              <div className="col-10 mx-auto col-md-4 my-3">
                 <h1 className="text-uppercase">{make_id}</h1>
                 <a
                   href="/"
@@ -133,15 +134,17 @@ class FavoriteDetails extends React.Component {
     } else if (this.state.showFavs === false) {
       return (
         <React.Fragment>
-          <div className="col-10 mx-auto col-md-6 col-lg4 my-3">
+          <div className="col-10 mx-auto col-md-4 my-3">
             <div className="card">
-              <img
-                src={image1}
-                alt="car"
-                className="img-card-top"
-                style={{ height: "14rem" }}
-                onClick={this.handleFav}
-              />
+              <div className="img-container">
+                <img
+                  src={image1}
+                  alt="car"
+                  className="img-card-top"
+                  style={{ height: "14rem" }}
+                  onClick={this.handleFav}
+                />
+              </div>
               <div className="card-body text-capitalize">
                 <h6>{name + " " + model}</h6>
                 <h6 className="text-warning text-slanted">{price}</h6>

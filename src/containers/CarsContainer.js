@@ -3,29 +3,52 @@ import CarsIndex from "../components/Cars/CarsIndex";
 import Search from "../components/Cars/Search";
 
 class CarsContainer extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      search: ""
+      search: "",
+      carList: [],
+      makeList: [],
+      temporary: this.props.tempData,
+      temporaryClone: this.props.tempData
     };
   }
 
   handleChange = e => {
     e.preventDefault();
-
+    const newFilterList = [...this.state.temporary].filter(car => {
+      return car.model.toLowerCase().includes(e.target.value.toLowerCase());
+    });
     this.setState({
-      search: e.target.value
+      search: e.target.value,
+      temporaryClone: newFilterList
     });
   };
 
-  handleSubmit = e => {
-    e.preventDefault();
-    console.log("hello from handleSubmit");
-  };
+  // handleSubmit = e => {
+  //   e.preventDefault();
+
+  //   const newtempData = [...this.props.tempData];
+  //   const newFilter = newtempData.filter(car =>
+  //     car.model.includes(this.state.search)
+  //   );
+  //   this.setState({
+  //     temporary: newFilter
+  //   });
+  // };
+
+  componentDidMount() {
+    const carList = this.props.cars.map(car => car.attributes);
+    const makeList = this.props.makes.map(make => make.attributes);
+    this.setState({
+      carList,
+      makeList
+    });
+    console.log(this.props);
+  }
+
   render() {
-    const { cars, makes, tempData, addToFavorites, addToLikes } = this.props;
-    const carList = cars.map(car => car.attributes);
-    const makeList = makes.map(make => make.attributes);
+    const { addToFavorites, addToLikes } = this.props;
 
     return (
       <div>
@@ -35,9 +58,9 @@ class CarsContainer extends React.Component {
           handleSubmit={this.handleSubmit}
         />
         <CarsIndex
-          carList={carList}
-          makeList={makeList}
-          tempData={tempData}
+          carList={this.state.carList}
+          makeList={this.state.makeList}
+          tempData={this.state.temporaryClone}
           addToFavorites={addToFavorites}
           addToLikes={addToLikes}
         />

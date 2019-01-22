@@ -7,6 +7,8 @@ import Navbar from "./components/Navbar/Navbar";
 import CarsContainer from "./containers/CarsContainer";
 import UsersContainer from "./containers/UsersContainer";
 import "bootstrap/dist/css/bootstrap.min.css";
+import LoginList from "./components/Login/LoginList";
+import Home from "./components/Login/Home";
 
 class App extends React.Component {
   constructor() {
@@ -20,13 +22,18 @@ class App extends React.Component {
   }
 
   addToFavorites = car => {
-    const filter = this.state.favorites.filter(
-      fav => fav.unique !== car.unique
-    );
-    const newFavorites = [...filter, car];
-    this.setState({
-      favorites: newFavorites
+    const filter = this.state.favorites.filter(fav => {
+      return fav.unique !== car.unique;
     });
+    const newFavorites = [...filter, car];
+    this.setState(
+      {
+        favorites: newFavorites
+      },
+      () => {
+        console.log(this.state.favorites);
+      }
+    );
   };
 
   addToLikes = (likes, changecar) => {
@@ -49,6 +56,7 @@ class App extends React.Component {
   };
 
   removeFav = newCar => {
+    console.log(newCar);
     const tempFavs = [...this.state.favorites];
     const newFavs = tempFavs.filter(car => car.unique !== newCar.unique);
 
@@ -73,24 +81,34 @@ class App extends React.Component {
       <div>
         <Navbar />
         <Switch>
-          <Route path="/cars" component={CarsContainer} />
-          <Route path="/favs" component={UsersContainer} />
+          <Route path="/login" component={LoginList} />
+          <Route
+            path="/cars"
+            render={() => (
+              <CarsContainer
+                tempData={this.state.tempCars}
+                makes={this.state.makes}
+                cars={this.state.cars}
+                addToFavorites={this.addToFavorites}
+                addToLikes={this.addToLikes}
+              />
+            )}
+          />
+          <Route
+            path="/favs"
+            render={() => (
+              <UsersContainer
+                tempData={this.state.tempCars}
+                makes={this.state.makes}
+                cars={this.state.cars}
+                favorites={this.state.favorites}
+                removeFav={this.removeFav}
+                addToLikes={this.addToLikes}
+              />
+            )}
+          />
+          <Route path="/" component={Home} />
         </Switch>
-        <CarsContainer
-          tempData={this.state.tempCars}
-          makes={this.state.makes}
-          cars={this.state.cars}
-          addToFavorites={this.addToFavorites}
-          addToLikes={this.addToLikes}
-        />
-        <UsersContainer
-          tempData={this.state.tempCars}
-          makes={this.state.makes}
-          cars={this.state.cars}
-          favorites={this.state.favorites}
-          removeFav={this.removeFav}
-          addToLikes={this.addToLikes}
-        />
       </div>
     );
   }

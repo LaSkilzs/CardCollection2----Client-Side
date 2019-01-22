@@ -11,7 +11,7 @@ class CarsIndex extends React.Component {
       addToLikes
     } = this.props;
     return (
-      <div>
+      <section className="carlist">
         <CarCard
           carList={carList}
           makeList={makeList}
@@ -19,7 +19,7 @@ class CarsIndex extends React.Component {
           addToFavorites={addToFavorites}
           addToLikes={addToLikes}
         />
-      </div>
+      </section>
     );
   }
 }
