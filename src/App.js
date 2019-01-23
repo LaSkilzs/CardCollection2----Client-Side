@@ -9,7 +9,6 @@ import UsersContainer from "./containers/UsersContainer";
 import "bootstrap/dist/css/bootstrap.min.css";
 import LoginList from "./components/Login/LoginList";
 import Home from "./components/Login/Home";
-import Search from "./components/Cars/Search";
 
 class App extends React.Component {
   constructor() {
@@ -17,10 +16,23 @@ class App extends React.Component {
     this.state = {
       cars: [],
       makes: [],
+      search: "",
       tempCars: data,
       favorites: favs
     };
   }
+
+  handleChange = e => {
+    e.preventDefault();
+    const newFilterList = [...this.state.favorites].filter(car => {
+      return car.model.toLowerCase().includes(e.target.value.toLowerCase());
+    });
+
+    this.setState({
+      search: e.target.value,
+      favorites: newFilterList
+    });
+  };
 
   addToFavorites = car => {
     const filter = this.state.favorites.filter(fav => {
@@ -105,6 +117,8 @@ class App extends React.Component {
                 favorites={this.state.favorites}
                 removeFav={this.removeFav}
                 addToLikes={this.addToLikes}
+                handleChange={this.handleChange}
+                search={this.state.search}
               />
             )}
           />

@@ -14,8 +14,8 @@ class Search extends React.Component {
                 <strong className="text-danger"> Car Collection</strong>
               </h1>
               <form className="mt-4" onSubmit={handleSubmit}>
-                <label htmlFor="search" className="text-capitalize">
-                  Find cars by model, make, name
+                <label htmlFor="search" className="search text-capitalize">
+                  find cars by model, make, name
                 </label>
                 <div className="input-group">
                   <input
@@ -25,6 +25,7 @@ class Search extends React.Component {
                     value={value}
                     onChange={handleChange}
                   />
+
                   <div className="input-group-append">
                     <button
                       type="submit"
