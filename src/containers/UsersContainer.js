@@ -3,19 +3,11 @@ import Favorites from "../components/Users/Favorites";
 import Search from "../components/Cars/Search";
 
 class UsersContainer extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      search: "",
-      temporary: this.props.favorites,
-      temporaryClone: this.props.favorites
-    };
-  }
-
-  componentDidUpdate(prevProps) {
-    console.log("update previous", prevProps);
-    console.log("did Updat current", this.props);
-  }
+  state = {
+    search: "",
+    temporary: this.props.favorites,
+    temporaryClone: this.props.favorites
+  };
 
   handleChange = e => {
     e.preventDefault();
@@ -30,16 +22,7 @@ class UsersContainer extends React.Component {
   };
 
   render() {
-    console.log(this.props);
-    console.log(this.state.temporaryClone);
-    const {
-      cars,
-      makes,
-      tempData,
-      favorites,
-      removeFav,
-      addToLikes
-    } = this.props;
+    const { cars, makes, tempData, removeFav, addToLikes } = this.props;
 
     const carList = cars.map(car => car.attributes);
     const makeList = makes.map(make => make.attributes);

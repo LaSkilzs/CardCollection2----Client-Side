@@ -9,6 +9,7 @@ import UsersContainer from "./containers/UsersContainer";
 import "bootstrap/dist/css/bootstrap.min.css";
 import LoginList from "./components/Login/LoginList";
 import Home from "./components/Login/Home";
+import Search from "./components/Cars/Search";
 
 class App extends React.Component {
   constructor() {
