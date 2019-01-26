@@ -17,5 +17,8 @@
   font-size: 5rem;
 }
 
+button {
+  color: grey;
+}
 /* .advanceSearch:hover {
 } */

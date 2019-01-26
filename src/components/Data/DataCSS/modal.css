@@ -1,0 +1,11 @@
+.form-group option {
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.search .fas {
+  color: red;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+}

@@ -10,6 +10,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import LoginList from "./components/Login/LoginList";
 import Home from "./components/Login/Home";
 import User from "./components/Users/User";
+import Modal from "./components/Data/Modal";
 
 class App extends React.Component {
   constructor() {
@@ -80,21 +81,22 @@ class App extends React.Component {
     });
   };
 
-  async componentDidMount() {
-    const responseC = await fetch("http://localhost:3000/api/v1/cars");
-    const responseM = await fetch("http://localhost:3000/api/v1/makes");
-    const cars = await responseC.json();
-    const makes = await responseM.json();
-    this.setState({
-      cars: cars.data.data,
-      makes: makes.data.data
-    });
-  }
+  // async componentDidMount() {
+  //   const responseC = await fetch("http://localhost:3000/api/v1/cars");
+  //   const responseM = await fetch("http://localhost:3000/api/v1/makes");
+  //   const cars = await responseC.json();
+  //   const makes = await responseM.json();
+  //   this.setState({
+  //     cars: cars.data.data,
+  //     makes: makes.data.data
+  //   });
+  // }
 
   render() {
     return (
       <div>
         <Navbar />
+
         <Switch>
           <Route path="/login" component={LoginList} />
           <Route

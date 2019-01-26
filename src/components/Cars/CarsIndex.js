@@ -1,5 +1,6 @@
 import React from "react";
 import CarCard from "./CarCard";
+import "./CarCSS/carindex.css";
 
 class CarsIndex extends React.Component {
   render() {
@@ -10,6 +11,9 @@ class CarsIndex extends React.Component {
       addToFavorites,
       addToLikes
     } = this.props;
+
+    const parent = "cars";
+
     return (
       <section className="carlist">
         <CarCard
@@ -18,6 +22,7 @@ class CarsIndex extends React.Component {
           tempData={tempData}
           addToFavorites={addToFavorites}
           addToLikes={addToLikes}
+          parent={parent}
         />
       </section>
     );
