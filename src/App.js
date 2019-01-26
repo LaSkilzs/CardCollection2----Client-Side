@@ -9,7 +9,7 @@ import UsersContainer from "./containers/UsersContainer";
 import "bootstrap/dist/css/bootstrap.min.css";
 import LoginList from "./components/Login/LoginList";
 import Home from "./components/Login/Home";
-import Search from "./components/Cars/Search";
+import User from "./components/Users/User";
 
 class App extends React.Component {
   constructor() {
@@ -17,10 +17,24 @@ class App extends React.Component {
     this.state = {
       cars: [],
       makes: [],
+      search: "",
       tempCars: data,
-      favorites: favs
+      favorites: favs,
+      tempFavorites: favs
     };
   }
+
+  handleChange = e => {
+    e.preventDefault();
+    const newFilterList = [...this.state.tempFavorites].filter(car => {
+      return car.model.toLowerCase().includes(e.target.value.toLowerCase());
+    });
+    console.log(newFilterList);
+    this.setState({
+      search: e.target.value,
+      favorites: newFilterList
+    });
+  };
 
   addToFavorites = car => {
     const filter = this.state.favorites.filter(fav => {
@@ -105,10 +119,13 @@ class App extends React.Component {
                 favorites={this.state.favorites}
                 removeFav={this.removeFav}
                 addToLikes={this.addToLikes}
+                handleChange={this.handleChange}
+                search={this.state.search}
               />
             )}
           />
-          <Route path="/" component={Home} />
+          <Route path="/user/:username" component={User} />
+          <Route exact path="/" component={Home} />
         </Switch>
       </div>
     );
