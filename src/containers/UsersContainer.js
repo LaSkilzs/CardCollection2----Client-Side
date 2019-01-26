@@ -1,6 +1,6 @@
 import React from "react";
 import Favorites from "../components/Users/Favorites";
-import Search from "../components/Cars/Search";
+import Search from "../components/Data/Search";
 
 class UsersContainer extends React.Component {
   render() {

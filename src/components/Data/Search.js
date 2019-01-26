@@ -1,7 +1,17 @@
 import React from "react";
-import "./search.css";
+import "./DataCSS/search.css";
+import Modal from "./Modal";
 
 class Search extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showModal: false
+    };
+  }
+
+  displayModal = () => this.setState({ showModal: !this.state.showModal });
+
   render() {
     const { value, handleSubmit, handleChange } = this.props;
     return (
@@ -34,17 +44,21 @@ class Search extends React.Component {
                     className={"form-control"}
                   />
                 </div>
-                <a
-                  href="#"
-                  className="advanceSearch badge badge-light"
+                <button
+                  className="advanceSearch btn btn-light"
                   style={{ color: "grey", fontSize: "1rem" }}
+                  onClick={this.displayModal}
                 >
                   advance search options
-                </a>
+                </button>
               </form>
             </div>
           </div>
         </div>
+        <Modal
+          displayModal={this.displayModal}
+          showModal={this.state.showModal}
+        />
       </React.Fragment>
     );
   }

@@ -1,6 +1,6 @@
 import React from "react";
-import FavoriteDetails from "./FavoriteDetails";
-import "./favoritecard.css";
+// import FavoriteDetails from "./FavoriteDetails";
+import "./FavCSS/favoritecard.css";
 
 const FavoriteCard = props => {
   const { favorites, removeFav, addToLikes } = props;

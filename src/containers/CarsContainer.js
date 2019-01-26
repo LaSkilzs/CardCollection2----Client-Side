@@ -1,6 +1,6 @@
 import React from "react";
 import CarsIndex from "../components/Cars/CarsIndex";
-import Search from "../components/Cars/Search";
+import Search from "../components/Data/Search";
 
 class CarsContainer extends React.Component {
   constructor(props) {
