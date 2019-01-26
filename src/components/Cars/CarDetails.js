@@ -1,5 +1,6 @@
 import React from "react";
 import "../Cars/cardetails.css";
+import Showpage from "../Users/Showpage";
 
 class CarDetails extends React.Component {
   constructor(props) {
@@ -124,6 +125,7 @@ class CarDetails extends React.Component {
     } else if (this.state.showCar === true) {
       return (
         <React.Fragment>
+          <Showpage />
           <div className="container">
             <div className="row">
               <div className="col-10 mx-auto col-md-4 my-3">

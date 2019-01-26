@@ -15,26 +15,32 @@ class Search extends React.Component {
               </h1>
               <form className="mt-4" onSubmit={handleSubmit}>
                 <label htmlFor="search" className="search text-capitalize">
-                  find cars by model, make, name
+                  find cars by model, make or name
                 </label>
-                <div className="input-group">
+
+                <div className="input-group-prepend">
+                  <button
+                    type="submit"
+                    className="input-group-text bg-primary text-white"
+                  >
+                    <i className="fas fa-search" />
+                  </button>
                   <input
                     type="text"
                     name="search"
                     placeholder="Ferrari"
                     value={value}
                     onChange={handleChange}
+                    className={"form-control"}
                   />
-
-                  <div className="input-group-append">
-                    <button
-                      type="submit"
-                      className="input-group-text bg-primary text-white"
-                    >
-                      <i className="fas fa-search" />
-                    </button>
-                  </div>
                 </div>
+                <a
+                  href="#"
+                  className="advanceSearch badge badge-light"
+                  style={{ color: "grey", fontSize: "1rem" }}
+                >
+                  advance search options
+                </a>
               </form>
             </div>
           </div>

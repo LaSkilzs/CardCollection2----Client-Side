@@ -44,7 +44,6 @@ class CarsContainer extends React.Component {
       carList,
       makeList
     });
-    console.log(this.props);
   }
 
   render() {
