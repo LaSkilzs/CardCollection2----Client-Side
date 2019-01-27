@@ -9,7 +9,8 @@ const CarCard = props => {
     addToLikes,
     favorites,
     parent,
-    removeFav
+    removeFav,
+    tempFilter
   } = props;
   return (
     <React.Fragment>
@@ -29,6 +30,7 @@ const CarCard = props => {
                   addToFavorites={addToFavorites}
                   addToLikes={addToLikes}
                   parent={parent}
+                  tempFilter={tempFilter}
                 />
               );
             })}

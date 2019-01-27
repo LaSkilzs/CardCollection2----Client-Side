@@ -1,6 +1,7 @@
 import React from "react";
 import CarsIndex from "../components/Cars/CarsIndex";
 import Search from "../components/Data/Search";
+import Filter from "../components/Data/Filter";
 
 class CarsContainer extends React.Component {
   constructor(props) {
@@ -10,7 +11,8 @@ class CarsContainer extends React.Component {
       carList: [],
       makeList: [],
       temporary: this.props.tempData,
-      temporaryClone: this.props.tempData
+      temporaryClone: this.props.tempData,
+      value: ""
     };
   }
 
@@ -46,6 +48,11 @@ class CarsContainer extends React.Component {
     });
   }
 
+  advanceSearch = e => {
+    console.log(e.target.value);
+    this.setState({ value: e.target.value });
+  };
+
   render() {
     const { addToFavorites, addToLikes } = this.props;
 
@@ -62,6 +69,13 @@ class CarsContainer extends React.Component {
           tempData={this.state.temporaryClone}
           addToFavorites={addToFavorites}
           addToLikes={addToLikes}
+          tempFilter={this.props.tempFilter}
+        />
+        <Filter
+          carList={this.state.carList}
+          makeList={this.state.makeList}
+          tempFilter={this.props.tempFilter}
+          value={this.state.value}
         />
       </div>
     );

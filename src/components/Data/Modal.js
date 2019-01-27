@@ -43,6 +43,7 @@ class Modal extends React.Component {
           <ModalDetail
             displayModal={this.displayModal}
             value={this.state.value}
+            advanceSearch={this.props.advanceSearch}
           />
         </div>
       );

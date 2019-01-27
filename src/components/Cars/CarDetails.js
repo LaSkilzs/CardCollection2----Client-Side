@@ -21,7 +21,7 @@ class CarDetails extends React.Component {
   };
   onClick = e => {
     e.preventDefault();
-    let car = this.props.tempData.find(car => car.unique === e.target.id);
+    let car = this.props.tempFilter.find(car => car.unique == e.target.id);
     this.setState({
       showCar: !this.state.showCar,
       car
@@ -76,6 +76,7 @@ class CarDetails extends React.Component {
               </div>
             </div>
           </div>
+          <Showpage showCar={this.state.showCar} car={this.state.car} />
         </React.Fragment>
       );
     } else {
@@ -119,6 +120,7 @@ class CarDetails extends React.Component {
               </div>
             </div>
           </div>
+          <Showpage showCar={this.state.showCar} car={this.state.car} />
         </React.Fragment>
       );
     }

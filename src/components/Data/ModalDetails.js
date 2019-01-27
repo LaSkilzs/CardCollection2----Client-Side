@@ -6,7 +6,7 @@ const ModalDetail = props => {
       <React.Fragment>
         <div className="make">
           <div className="input-group">
-            <select className="form-control">
+            <select onChange={props.advanceSearch} className="form-control">
               <option default="Choose...">Choose..</option>
               <option value="1">Porsche</option>
               <option value="2">Lamborghini</option>

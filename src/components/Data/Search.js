@@ -10,7 +10,10 @@ class Search extends React.Component {
     };
   }
 
-  displayModal = () => this.setState({ showModal: !this.state.showModal });
+  displayModal = e => {
+    e.preventDefault();
+    this.setState({ showModal: !this.state.showModal });
+  };
 
   render() {
     const { value, handleSubmit, handleChange } = this.props;
@@ -58,6 +61,7 @@ class Search extends React.Component {
         <Modal
           displayModal={this.displayModal}
           showModal={this.state.showModal}
+          advanceSearch={this.props.advanceSearch}
         />
       </React.Fragment>
     );
