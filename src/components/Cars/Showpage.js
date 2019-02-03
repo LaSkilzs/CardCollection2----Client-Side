@@ -4,12 +4,9 @@ class Showpage extends React.Component {
   constructor() {
     super();
     this.state = {
-      showImage: false,
-      showDetails: false
+      showImage: false
     };
   }
-
-  showDetails = () => {};
 
   displayImage = index => {
     switch (index) {
@@ -38,113 +35,131 @@ class Showpage extends React.Component {
   };
 
   render() {
+    const {
+      make_id,
+      summary,
+      horsepower,
+      max_speed,
+      acceleration_secs,
+      drive,
+      body,
+      unique
+    } = this.props.car;
+
+    console.log(this.props.car);
     return (
       <React.Fragment>
-        {/* {parent === "cars" ? (
-          <div className="container">
-            <div className="row">
-              <div className="col-10 mx-auto col-md-4 my-3">
-                <button
-                  className="btn btn-primary mb-5 text-capitalize"
-                  type="button"
-                  onClick={this.onClick}
-                >
-                  back to cars
-                </button>
-                {this.displayImage(this.state.showImage)}
-              </div>
+        <div>
+          {this.props.parent === "cars" ? (
+            <div className="container">
+              <div className="row">
+                <div className="col-10 mx-auto col-md-4 my-3">
+                  <button
+                    className="btn btn-primary mb-5 text-capitalize"
+                    type="button"
+                    onClick={this.onClick}
+                  >
+                    back to cars
+                  </button>
+                  {this.displayImage(this.state.showImage)}
+                </div>
 
-              <div className="col-10 mx-auto col-md-4 my-3">
-                <h1 className="text-uppercase">{make_id}</h1>
-                <a
-                  href="/"
-                  className="btn btn-success mt-2 text-capitalize"
-                  onClick={this.handleImage}
-                >
-                  next image
-                </a>
-                <a
-                  href="/"
-                  className="btn btn-danger mt-2 text-capitalize"
-                  onClick={this.handleFavorites}
-                >
-                  add to favs
-                </a>
-                <ul className="list-group mt-4">
-                  <h2 className="mt-3 mb-4">Specs</h2>
-                  <li className="list-group-item text-slanted">
-                    Summary<p>{summary} </p>
-                  </li>
-                  <li className="list-group-item text-slanted">
-                    Horsepower: {horsepower}hp
-                  </li>
-                  <li className="list-group-item text-slanted">
-                    Max Speed: {max_speed}mph
-                  </li>
-                  <li className="list-group-item text-slanted">
-                    Acceleration: {acceleration_secs}secs
-                  </li>
-                  <li className="list-group-item text-slanted">
-                    Drive: {drive}
-                  </li>
-                  <li className="list-group-item text-slanted">Body: {body}</li>
-                </ul>
+                <div className="col-10 mx-auto col-md-4 my-3">
+                  <h1 className="text-uppercase">{make_id}</h1>
+                  <a
+                    href="/"
+                    className="btn btn-success mt-2 text-capitalize"
+                    onClick={this.handleImage}
+                  >
+                    next image
+                  </a>
+                  <a
+                    href="/"
+                    className="btn btn-danger mt-2 text-capitalize"
+                    onClick={this.handleFavorites}
+                  >
+                    add to favs
+                  </a>
+                  <ul className="list-group mt-4">
+                    <h2 className="mt-3 mb-4">Specs</h2>
+                    <li className="list-group-item text-slanted">
+                      Summary<p>{summary} </p>
+                    </li>
+                    <li className="list-group-item text-slanted">
+                      Horsepower: {horsepower}hp
+                    </li>
+                    <li className="list-group-item text-slanted">
+                      Max Speed: {max_speed}mph
+                    </li>
+                    <li className="list-group-item text-slanted">
+                      Acceleration: {acceleration_secs}secs
+                    </li>
+                    <li className="list-group-item text-slanted">
+                      Drive: {drive}
+                    </li>
+                    <li className="list-group-item text-slanted">
+                      Body: {body}
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>
-        ) : (
-          <div className="container">
-            <div className="row">
-              <div className="col-10 mx-auto col-md-4 my-3">
-                <button
-                  className="btn btn-primary mb-5 text-capitalize"
-                  type="button"
-                  onClick={this.handleFav}
-                >
-                  back to favs
-                </button>
-                {this.displayImage(this.state.showImage)}
-              </div>
+          ) : (
+            <div className="container">
+              <div className="row">
+                <div className="col-10 mx-auto col-md-4 my-3">
+                  <button
+                    className="btn btn-primary mb-5 text-capitalize"
+                    type="button"
+                    onClick={this.handleFav}
+                  >
+                    back to favs
+                  </button>
+                  {this.displayImage(this.state.showImage)}
+                </div>
 
-              <div className="col-10 mx-auto col-md-4 my-3">
-                <h1 className="text-uppercase">{make_id}</h1>
-                <a
-                  href="/"
-                  className="btn btn-success mt-2 text-capitalize"
-                  onClick={this.handleImage}
-                >
-                  next image
-                </a>
-                <a
-                  href="/"
-                  className="btn btn-danger mt-2 text-capitalize"
-                  onClick={this.handleRemove}
-                >
-                  remove fav
-                </a>
-                <ul className="list-group mt-4">
-                  <h2 className="mt-3 mb-4">Specs</h2>
-                  <li className="list-group-item text-slanted">
-                    Summary<p>{summary} </p>
-                  </li>
-                  <li className="list-group-item text-slanted">
-                    Horsepower: {horsepower}hp
-                  </li>
-                  <li className="list-group-item text-slanted">
-                    Max Speed: {max_speed}mph
-                  </li>
-                  <li className="list-group-item text-slanted">
-                    Acceleration: {acceleration_secs}secs
-                  </li>
-                  <li className="list-group-item text-slanted">
-                    Drive: {drive}
-                  </li>
-                  <li className="list-group-item text-slanted">Body: {body}</li>
-                </ul>
+                <div className="col-10 mx-auto col-md-4 my-3">
+                  <h1 className="text-uppercase">{make_id}</h1>
+                  <a
+                    href="/"
+                    className="btn btn-success mt-2 text-capitalize"
+                    onClick={this.handleImage}
+                  >
+                    next image
+                  </a>
+                  <a
+                    href="/"
+                    className="btn btn-danger mt-2 text-capitalize"
+                    onClick={this.handleRemove}
+                  >
+                    remove fav
+                  </a>
+                  <ul className="list-group mt-4">
+                    <h2 className="mt-3 mb-4">Specs</h2>
+                    <li className="list-group-item text-slanted">
+                      Summary<p>{summary} </p>
+                    </li>
+                    <li className="list-group-item text-slanted">
+                      Horsepower: {horsepower}hp
+                    </li>
+                    <li className="list-group-item text-slanted">
+                      Max Speed: {max_speed}mph
+                    </li>
+                    <li className="list-group-item text-slanted">
+                      Acceleration: {acceleration_secs}secs
+                    </li>
+                    <li className="list-group-item text-slanted">
+                      Drive: {drive}
+                    </li>
+                    <li className="list-group-item text-slanted">
+                      Body: {body}
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>
-        )} */}
+          )}
+        </div>
       </React.Fragment>
     );
   }

@@ -9,7 +9,9 @@ class CarsIndex extends React.Component {
       makeList,
       tempData,
       addToFavorites,
-      addToLikes
+      addToLikes,
+      tempFilter,
+      handleImage
     } = this.props;
 
     const parent = "cars";
@@ -23,6 +25,8 @@ class CarsIndex extends React.Component {
           addToFavorites={addToFavorites}
           addToLikes={addToLikes}
           parent={parent}
+          tempFilter={tempFilter}
+          handleImage={handleImage}
         />
       </section>
     );
