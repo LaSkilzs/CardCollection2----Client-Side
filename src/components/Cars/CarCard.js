@@ -4,13 +4,14 @@ import "./CarCSS/carcard.css";
 
 const CarCard = props => {
   const {
-    tempData,
+    // tempData,
     addToFavorites,
     addToLikes,
     favorites,
     parent,
     removeFav,
-    tempFilter
+    tempFilter,
+    handleImage
   } = props;
   return (
     <React.Fragment>
@@ -22,7 +23,7 @@ const CarCard = props => {
             </div>
           </div>
           <div className="row">
-            {tempData.map(car => {
+            {props.carList.map(car => {
               return (
                 <CarDetails
                   key={car.unique}
@@ -31,6 +32,7 @@ const CarCard = props => {
                   addToLikes={addToLikes}
                   parent={parent}
                   tempFilter={tempFilter}
+                  handleImage={handleImage}
                 />
               );
             })}

@@ -1,5 +1,4 @@
 import React from "react";
-import Showpage from "./Showpage";
 import "./CarCSS/cardetails.css";
 
 class CarDetails extends React.Component {
@@ -21,11 +20,7 @@ class CarDetails extends React.Component {
   };
   onClick = e => {
     e.preventDefault();
-    let car = this.props.tempFilter.find(car => car.unique == e.target.id);
-    this.setState({
-      showCar: !this.state.showCar,
-      car
-    });
+    this.props.handleImage(this.props.car, this.props.parent);
   };
   handleRemove = e => {
     e.preventDefault();
@@ -51,7 +46,7 @@ class CarDetails extends React.Component {
                 />
               </div>
               <div className="card-body text-capitalize">
-                <h6>{name + " " + model}</h6>
+                <h6>{name}</h6>
                 <h6 className="text-warning text-slanted">{price}</h6>
                 <h5 className="likes">Likes: {likes}</h5>
               </div>
@@ -76,7 +71,6 @@ class CarDetails extends React.Component {
               </div>
             </div>
           </div>
-          <Showpage showCar={this.state.showCar} car={this.state.car} />
         </React.Fragment>
       );
     } else {
@@ -120,7 +114,6 @@ class CarDetails extends React.Component {
               </div>
             </div>
           </div>
-          <Showpage showCar={this.state.showCar} car={this.state.car} />
         </React.Fragment>
       );
     }

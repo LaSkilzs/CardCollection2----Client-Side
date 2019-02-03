@@ -4,12 +4,9 @@ class Showpage extends React.Component {
   constructor() {
     super();
     this.state = {
-      showImage: false,
-      showDetails: false
+      showImage: false
     };
   }
-
-  showDetails = () => {};
 
   displayImage = index => {
     switch (index) {
@@ -45,12 +42,14 @@ class Showpage extends React.Component {
       max_speed,
       acceleration_secs,
       drive,
-      body
+      body,
+      unique
     } = this.props.car;
 
-    if (this.props.showCar) {
-      return (
-        <React.Fragment>
+    console.log(this.props.car);
+    return (
+      <React.Fragment>
+        <div>
           {this.props.parent === "cars" ? (
             <div className="container">
               <div className="row">
@@ -160,11 +159,9 @@ class Showpage extends React.Component {
               </div>
             </div>
           )}
-        </React.Fragment>
-      );
-    } else {
-      return null;
-    }
+        </div>
+      </React.Fragment>
+    );
   }
 }
 

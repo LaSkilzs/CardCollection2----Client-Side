@@ -1,5 +1,5 @@
 import React from "react";
-// import FavoriteCard from "./FavoriteCard";
+
 import CarCard from "../Cars/CarCard";
 import "./FavCSS/favorite.css";
 import "../Cars/CarCard";

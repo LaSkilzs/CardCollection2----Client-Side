@@ -4,48 +4,17 @@ import Search from "../components/Data/Search";
 import Filter from "../components/Data/Filter";
 
 class CarsContainer extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      search: "",
-      carList: [],
-      makeList: [],
-      temporary: this.props.tempData,
-      temporaryClone: this.props.tempData,
-      value: ""
-    };
-  }
-
-  handleChange = e => {
-    e.preventDefault();
-    const newFilterList = [...this.state.temporary].filter(car => {
-      return car.model.toLowerCase().includes(e.target.value.toLowerCase());
-    });
-    this.setState({
-      search: e.target.value,
-      temporaryClone: newFilterList
-    });
+  state = {
+    search: "",
+    temporary: this.props.cars,
+    temporaryClone: [...this.props.cars],
+    value: ""
   };
 
-  // handleSubmit = e => {
-  //   e.preventDefault();
-
-  //   const newtempData = [...this.props.tempData];
-  //   const newFilter = newtempData.filter(car =>
-  //     car.model.includes(this.state.search)
-  //   );
-  //   this.setState({
-  //     temporary: newFilter
-  //   });
-  // };
-
-  componentDidMount() {
-    const carList = this.props.cars.map(car => car.attributes);
-    const makeList = this.props.makes.map(make => make.attributes);
-    this.setState({
-      carList,
-      makeList
-    });
+  handleChange(e) {
+    this.props.cars.filter(car =>
+      car.model.toLowerCase().includes(e.target.value.toLowerCase())
+    );
   }
 
   advanceSearch = e => {
@@ -54,7 +23,7 @@ class CarsContainer extends React.Component {
   };
 
   render() {
-    const { addToFavorites, addToLikes } = this.props;
+    const { addToFavorites, addToLikes, cars, makes, handleImage } = this.props;
 
     return (
       <div>
@@ -64,16 +33,17 @@ class CarsContainer extends React.Component {
           handleSubmit={this.handleSubmit}
         />
         <CarsIndex
-          carList={this.state.carList}
-          makeList={this.state.makeList}
+          carList={cars}
+          makeList={makes}
           tempData={this.state.temporaryClone}
           addToFavorites={addToFavorites}
           addToLikes={addToLikes}
           tempFilter={this.props.tempFilter}
+          handleImage={handleImage}
         />
         <Filter
-          carList={this.state.carList}
-          makeList={this.state.makeList}
+          carList={cars}
+          makeList={makes}
           tempFilter={this.props.tempFilter}
           value={this.state.value}
         />
