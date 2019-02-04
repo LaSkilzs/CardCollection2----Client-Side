@@ -25,6 +25,7 @@ class LoginCard extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
+
     let user = {
       usersname: this.state.usersname,
       password: this.state.password,
@@ -34,6 +35,7 @@ class LoginCard extends React.Component {
     if (API.login(user) !== {}) {
       console.log(user.usersname);
       this.props.login(user.usersname);
+      this.props.history.push("/cars");
     }
   };
 
@@ -41,7 +43,9 @@ class LoginCard extends React.Component {
     return (
       <div>
         <form className="form-signin" onSubmit={this.handleSubmit}>
-          <h3 className="h3 mb-3 font-weight-normal">Please sign in</h3>
+          <h3 className="h3 mb-3 font-weight-normal" style={{ color: "white" }}>
+            Please sign in
+          </h3>
           <input
             type="text"
             id="inputUsername"
@@ -72,8 +76,9 @@ class LoginCard extends React.Component {
             required
           />
           <div className="checkbox mb-3">
-            <label>
-              <input type="checkbox" value="remember-me" /> Remember me
+            <label style={{ color: "white" }}>
+              <input type="checkbox" value="remember-me" />
+              Remember me
             </label>
           </div>
           <button className="btn btn-lg btn-danger btn-block" type="submit">

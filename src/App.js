@@ -24,7 +24,7 @@ class App extends React.Component {
       favorites: favs,
       tempFavorites: favs,
       car: {},
-      parent: "",
+      parent: "cars",
       showDetailCar: false,
       usersname: ""
     };
@@ -99,7 +99,14 @@ class App extends React.Component {
   };
 
   onShowImage(car, parent) {
-    return <Showpage car={car} parent={parent} />;
+    console.log(car);
+    return (
+      <Showpage
+        car={car}
+        parent={parent}
+        showDetailCar={this.state.showDetailCar}
+      />
+    );
   }
 
   async componentDidMount() {
@@ -142,7 +149,7 @@ class App extends React.Component {
           />
           <Route
             path="/cars"
-            render={() => {
+            render={routeProps => {
               return (
                 <CarsContainer
                   tempData={this.state.tempCars}
@@ -152,11 +159,16 @@ class App extends React.Component {
                   addToLikes={this.addToLikes}
                   tempFilter={this.state.tempFilter}
                   handleImage={this.handleImage}
+                  usersname={this.state.usersname}
+                  {...routeProps}
                 />
               );
             }}
           />
-          <Route path="/showcars" component={() => this.onShowImage} />
+          <Route
+            path="/showcars"
+            component={() => this.onShowImage(this.state.car, "cars")}
+          />
 
           <Route
             path="/favs"

@@ -21,6 +21,11 @@ class CarsContainer extends React.Component {
     this.setState({ value: e.target.value });
   };
 
+  componentDidMount() {
+    if (!this.props.usersname) {
+      this.props.history.push("/login");
+    }
+  }
   render() {
     const { addToFavorites, addToLikes, cars, makes, handleImage } = this.props;
 

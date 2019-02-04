@@ -4,7 +4,6 @@ import "./CarCSS/carcard.css";
 
 const CarCard = props => {
   const {
-    // tempData,
     addToFavorites,
     addToLikes,
     favorites,

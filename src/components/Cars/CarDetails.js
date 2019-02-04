@@ -37,14 +37,14 @@ class CarDetails extends React.Component {
           <div className="col-10 mx-auto col-md-4 col-lg4 my-3">
             <div className="card">
               <div className="img-container">
-                <Link to={`/cars/${name}`}>
+                <Link to="/showcars">
                   <img
                     src={image1}
                     id={unique}
                     alt="car"
                     className="img-card-top"
                     style={{ height: "14rem" }}
-                    onClick={this.onClick}
+                    // onClick={this.onClick}
                   />
                 </Link>
               </div>
