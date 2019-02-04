@@ -1,5 +1,6 @@
 import React from "react";
 import "./CarCSS/cardetails.css";
+import { Link } from "react-router-dom";
 
 class CarDetails extends React.Component {
   constructor(props) {
@@ -36,14 +37,16 @@ class CarDetails extends React.Component {
           <div className="col-10 mx-auto col-md-4 col-lg4 my-3">
             <div className="card">
               <div className="img-container">
-                <img
-                  src={image1}
-                  id={unique}
-                  alt="car"
-                  className="img-card-top"
-                  style={{ height: "14rem" }}
-                  onClick={this.onClick}
-                />
+                <Link to={`/cars/${name}`}>
+                  <img
+                    src={image1}
+                    id={unique}
+                    alt="car"
+                    className="img-card-top"
+                    style={{ height: "14rem" }}
+                    onClick={this.onClick}
+                  />
+                </Link>
               </div>
               <div className="card-body text-capitalize">
                 <h6>{name}</h6>

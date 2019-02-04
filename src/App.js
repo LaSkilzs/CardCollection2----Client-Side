@@ -7,7 +7,7 @@ import Navbar from "./components/Navbar/Navbar";
 import CarsContainer from "./containers/CarsContainer";
 import UsersContainer from "./containers/UsersContainer";
 import "bootstrap/dist/css/bootstrap.min.css";
-import LoginList from "./components/Login/LoginList";
+import LoginCard from "./components/Login/LoginCard";
 import Home from "./components/Login/Home";
 import User from "./components/Users/User";
 import Showpage from "./components/Cars/Showpage";
@@ -25,9 +25,13 @@ class App extends React.Component {
       tempFavorites: favs,
       car: {},
       parent: "",
-      showDetailCar: false
+      showDetailCar: false,
+      usersname: ""
     };
   }
+
+  login = usersname => this.setState({ usersname });
+  logout = () => this.setState({ usersname: "" });
 
   handleChange = e => {
     e.preventDefault();
@@ -86,13 +90,17 @@ class App extends React.Component {
 
   handleImage = (car, parent) => {
     console.log(car);
-    console.log(this.state.showDetailCar);
     this.setState({
       car,
       parent: parent,
       showDetailCar: !this.state.showDetailCar
     });
+    this.onShowImage(car, parent);
   };
+
+  onShowImage(car, parent) {
+    return <Showpage car={car} parent={parent} />;
+  }
 
   async componentDidMount() {
     const responseC = await fetch("http://localhost:3000/api/v1/cars");
@@ -110,24 +118,28 @@ class App extends React.Component {
   }
 
   render() {
+    const { login } = this;
     return (
       <div>
         <Navbar />
         <Switch>
           <Route
-            path="/cars/:id"
-            render={() => {
-              return (
-                <Showpage
-                  car={this.state.car}
-                  showDetailCar={this.state.showDetailCar}
-                  parent={this.state.parent}
-                />
-              );
-            }}
+            exact
+            path="/"
+            component={routerProps => (
+              <Home
+                usersname={this.state.usersname}
+                {...routerProps}
+                logout={this.logout}
+              />
+            )}
           />
-          <Route exact path="/" component={Home} />
-          <Route path="/login" component={LoginList} />
+          <Route
+            path="/login"
+            component={routerProps => (
+              <LoginCard login={login} {...routerProps} />
+            )}
+          />
           <Route
             path="/cars"
             render={() => {
@@ -144,6 +156,8 @@ class App extends React.Component {
               );
             }}
           />
+          <Route path="/showcars" component={() => this.onShowImage} />
+
           <Route
             path="/favs"
             render={() => (

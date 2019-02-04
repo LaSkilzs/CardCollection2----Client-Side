@@ -18,7 +18,6 @@ class CarsContainer extends React.Component {
   }
 
   advanceSearch = e => {
-    console.log(e.target.value);
     this.setState({ value: e.target.value });
   };
 
